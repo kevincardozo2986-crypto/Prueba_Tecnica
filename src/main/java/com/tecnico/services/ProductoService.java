@@ -69,23 +69,7 @@ public class ProductoService {
     private void guardar() {
         try {
             archivo.getParentFile().mkdirs();
-            FileWriter escritor = new FileWriter(archivo);
-            escritor.write("[\n");
-
-            for (int i = 0; i < productos.size(); i++) {
-                Producto p = productos.get(i);
-                escritor.write("{\"id\":" + p.getId()
-                    + ",\"nombre\":\"" + p.getNombre()
-                    + "\",\"precio\":" + p.getPrecio()
-                    + ",\"stock\":" + p.getStock()
-                    + ",\"categoria\":\"" + p.getCategoria() + "\"}");
-
-                if (i < productos.size() - 1) escritor.write(",");
-                escritor.write("\n");
-            }
-
-            escritor.write("]");
-            escritor.close();
+            
         } catch (Exception e) {
             System.out.println("Error al guardar los productos.");
         }
@@ -95,23 +79,6 @@ public class ProductoService {
         try {
             if (!archivo.exists()) return;
 
-            String texto = Files.readString(archivo.toPath());
-            texto = texto.replace("[", "").replace("]", "").trim();
-            if (texto.isEmpty()) return;
-
-            String[] filas = texto.split("},\\s*\\{");
-            for (String fila : filas) {
-                fila = fila.replace("{", "").replace("}", "").replace("\"", "");
-                String[] datos = fila.split(",");
-
-                int id = Integer.parseInt(datos[0].split(":")[1]);
-                String nombre = datos[1].split(":")[1];
-                double precio = Double.parseDouble(datos[2].split(":")[1]);
-                int stock = Integer.parseInt(datos[3].split(":")[1]);
-                String categoria = datos[4].split(":")[1];
-
-                productos.add(new Producto(id, nombre, precio, stock, categoria));
-                siguienteId = id + 1;
             }
         } catch (Exception e) {
             System.out.println("Error al cargar los productos.");
