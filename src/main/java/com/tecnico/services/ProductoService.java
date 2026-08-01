@@ -123,15 +123,14 @@ public class ProductoService {
 
         try {
 
-            // Crear la carpeta data si todavía no existe
             archivo.getParentFile().mkdirs();
 
             FileWriter escritor = new FileWriter(archivo);
 
-            // Recorrer todos los productos
+            
             for (Producto producto : productos) {
 
-                // Guardar cada producto en una línea
+                
                 escritor.write(
                         producto.getId() + "|" +
                         producto.getNombre() + "|" +
@@ -156,7 +155,7 @@ public class ProductoService {
 
         try {
 
-            // Si el archivo no existe, no hay productos para cargar
+            
             if (!archivo.exists()) {
                 return;
             }
@@ -167,10 +166,10 @@ public class ProductoService {
 
             String linea;
 
-            // Leer el archivo línea por línea
+            
             while ((linea = lector.readLine()) != null) {
 
-                // Separar los datos usando el símbolo |
+              
                 String[] datos = linea.split("\\|");
 
                 int id = Integer.parseInt(datos[0]);
@@ -193,7 +192,7 @@ public class ProductoService {
 
                 productos.add(producto);
 
-                // Evitar que se repitan los ID
+               
                 if (id >= siguienteId) {
                     siguienteId = id + 1;
                 }
