@@ -1,7 +1,7 @@
 Aplicación de consola para crear, consultar, actualizar y eliminar productos. Los datos se conservan en productos.json y cada producto contiene nombre, precio, stock y categoría.
 
 Como instalar el proyecto:
-git clone <URL-DEL-REPOSITORIO>
+git clone <https://github.com/kevincardozo2986-crypto/Prueba_Tecnica>
 cd proyecto_tecnico
 mvn clean package
 
@@ -26,3 +26,5 @@ Usé tres clases:
 Así el código queda ordenado sin agregar una estructura difícil de entender.
 
 Validé que el nombre y la categoría no estén vacíos, y que el precio y el stock no sean negativos. El reto principal fue guardar y volver a leer los productos desde el archivo pero se logro con los metodos cargar y guardar.
+
+Fue pan comido.
